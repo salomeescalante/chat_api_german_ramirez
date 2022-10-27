@@ -1,23 +1,39 @@
 const db = require('../utils/database')
 const { DataTypes } = require('sequelize')
 const Users = require('./users.models')
-const Categories = require('./categories.models')
+const Messages = require('./messages.models')
 
-const Posts = db.define('posts', {
+const Messages = db.define('messages', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false
     },
-    title: {
+    firstname: {
         type: DataTypes.STRING,  //varchar
         allowNull: false
     },
-    content: {
+    lastname: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    //? Llave foranea de Users
+
+    password: {
+
+    },
+    profile_image: {
+
+    },
+    phone: {
+
+    },
+    created_at: {
+
+    },
+    updated_at: {
+
+    },
+    // //? Llave foranea de Users
     createdBy: {
         type: DataTypes.UUID,
         allowNull: false,
@@ -31,7 +47,7 @@ const Posts = db.define('posts', {
     categoryId:{
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'created_by',
+        field: 'category_id',
         references: {
             key: 'id',
             model: Categories
@@ -40,7 +56,7 @@ const Posts = db.define('posts', {
 
 } )
 
-module.exports = Posts
+module.exports = Messages
 
 
 //! procedimiento para hacer el clon en github:

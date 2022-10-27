@@ -1,7 +1,7 @@
-const categoryControllers = require('./categories.controller');
+const conversationControllers = require('./conversations.controllers');
 
-const getAllCategories = (req, res) => {
-    categoryControllers.getAllCategories()
+const getAllConversations = (req, res) => {
+    messageControllers.getAllConversations()
         .then((data) => {
             res.status(200).json(data)
         })
@@ -10,11 +10,11 @@ const getAllCategories = (req, res) => {
         })
 }
 
-// /categories/:id
-const getCategoryById = (req, res) => {
+// /conversations/:id
+const getConversationById = (req, res) => {
     const id = req.params.id
 
-    categoryControllers.getCategoryById(id)
+    conversationControllers.getConversationById(id)
         .then(data => {
             if(data){
                 res.status(200).json(data)
@@ -27,13 +27,13 @@ const getCategoryById = (req, res) => {
         });
 
 }
-// /categories
-const postCategory = (req, res) => {
+// /conversations
+const postConversation = (req, res) => {
     const { name } = req.body;
   
     if (name) {
-      categoryControllers
-        .createCategory(name)
+      conversationControllers
+        .createConversation(name)
         .then((data) => {
           res.status(201).json(data);
         })
@@ -49,7 +49,7 @@ const postCategory = (req, res) => {
 
 module.exports =
 module.exports = {
-    getAllCategories,
-    getCategoryById,
-    postCategory
+    getAllConversations,
+    getConversationById,
+    postConversation
 };

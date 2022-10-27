@@ -1,46 +1,46 @@
-const Posts = require('../models/posts.models')
+const Messages = require('../models/messages.models')
 
 const uuid = require('uuid')
 const Users = require('../models/users.models')
-const Categories = require('../models/categories.models')
+const Conversations = require('../models/conversations.models')
 
-const getAllPosts = async() => {
-    const data = await Posts.findAll({
+const getAllMessages = async() => {
+    const data = await Messages.findAll({
         include:[
             {
                 model: Users
             },
             {
-                model: Categories,
+                model: Conversations,
                 attributes: {
                     exclude: ['id']
                 }
             }
         ],
         attributes: {
-            exclude: ['createdAt', 'updatedAt', 'categoryId']
+            exclude: ['createdAt', 'updatedAt', 'conversationId']
         }
     })
     return data
 }
 
-const getPostById = async(id) => {
+const getMessageById = async(id) => {
 
 }
 
-const createPost = async (data) => {
-    const response = await Posts.create({
+const createMessage = async (data) => {
+    const response = await Messages.create({
         id: uuid.v4(),
         title: data.title,
         content: data.content,
         createdBy: data.userId, //? este es el user id que viene desde el token
-        categoryId: data.categoryId
+        conversationId: data.conversationId
     })
     return response
 }
 
 module.exports = {
-    getAllPosts,
-    getPostById,
-    createPost
+    getAllMessages,
+    getMessageById,
+    createMessage
 }

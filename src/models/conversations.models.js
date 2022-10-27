@@ -2,7 +2,7 @@
  const db = require('../utils/database')
  const { DataTypes } = require('sequelize')
  
- const Categories = db.define('categories' , {
+ const Conversations = db.define('conversations' , {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -18,4 +18,4 @@
     timestamps: false
  })
 
- module.exports = Categories
+ module.exports = Conversations

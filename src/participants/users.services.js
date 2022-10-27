@@ -1,7 +1,7 @@
-const postControllers = require('./posts.controller')
+const postControllers = require('./users.controller')
 
-const getAllPosts = (req, res) => {
-    postControllers.getAllPosts()
+const getAllMessages = (req, res) => {
+    postControllers.getAllMessages()
         .then(data => {
             res.status(200).json(data)
         })
@@ -11,12 +11,12 @@ const getAllPosts = (req, res) => {
 }
 
 
-const createPost = (req, res) => {
+const createMessage = (req, res) => {
     //? Este es el id del usuario loggeado
     const userId = req.user.id 
     const { title, content, categoryId } = req.body
     if(title && content && categoryId){
-        postControllers.createPost({title, content, userId, categoryId})
+        postControllers.createMessage({title, content, userId, categoryId})
             .then(data => {
                 res.status(201).json(data)
             })
@@ -38,6 +38,6 @@ const createPost = (req, res) => {
 
 
 module.exports = {
-    createPost,
-    getAllPosts
+    createMessage,
+    getAllMessages
 }
