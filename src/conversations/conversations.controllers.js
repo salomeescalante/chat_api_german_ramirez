@@ -6,9 +6,10 @@ const getAllConversations = async() => {
 }
 
 const getConversationById = async(id) => {
-    const data = await Conversations.findOne({
+    const data = await Conversations.findAll({
         where: {
-            id
+            title,
+            userId
         }
     })
     return data
@@ -23,8 +24,20 @@ const createConversation = async(senderId, conversationId, message) => {
     return response
 }
 
+const updateConversation = async (userId, id, title) => {
+    const result = await Conversations.update(title, {
+        where: {
+            userId,
+            id
+        }
+    })
+    return result;
+}
+
 module.exports = {
     getAllConversations,
     getConversationById,
-    createConversation
+    createConversation,
+    updateConversation
+
 }

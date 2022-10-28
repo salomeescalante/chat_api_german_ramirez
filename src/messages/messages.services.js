@@ -47,7 +47,7 @@ const postMessage = (req, res) => {
   
 
 
-module.exports =
+
 module.exports = {
     getAllMessages,
     getMessageById,

@@ -1,6 +1,7 @@
  
  const db = require('../utils/database')
  const { DataTypes } = require('sequelize')
+const Users = require('./users.models')
  
  const Conversations = db.define('conversations' , {
     id: {
@@ -9,9 +10,22 @@
       primaryKey: true,
       allowNull: false
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      field: 'image_Url'
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      field: 'user_Id',
+      references: {
+        key: 'id',
+        model: Users
+      }
     }
  }, {
    //? Evita que sequelize agregue las columnas de createdAt y updatedAt
