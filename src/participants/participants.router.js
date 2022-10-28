@@ -1,15 +1,15 @@
 const router = require('express').Router()
 const passport = require('passport')
 
-const usersServices = require('./users.services')
+const participantsServices = require('./participants.services')
 require('../middlewares/auth.middleware')(passport)
 
 
 router.route('/')
-    .get(usersServices.getAllUsers)
+    .get(participantsServices.getAllParticipants)
     .post(
         passport.authenticate('jwt', {session: false}),
-        conversationServices.createConversation
+        participantServices.createParticipant
     )
 
 
