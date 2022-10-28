@@ -26,7 +26,19 @@ const Users = require('./users.models')
         key: 'id',
         model: Users
       }
-    }
+    },
+
+    
+      // //? Llave foranea de Users
+      createdBy: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        field: 'created_by',
+        references: {
+            key: 'id',
+            model: Users
+        },
+    },
  }, {
    //? Evita que sequelize agregue las columnas de createdAt y updatedAt
     timestamps: false

@@ -3,6 +3,7 @@
 const Messages = require('./messages.models')
 const Users = require('./users.models')
 const Conversations = require('./conversations.models')
+// const Participants = require('./participants.models')
 
 const initModels = () => {
 // para relaciones(uno a uno, uno a muchos, etc)
